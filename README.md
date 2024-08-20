@@ -19,4 +19,25 @@ cmake ..
 4. Build the project:
 make
 
+Run Sample Test:
+================
 
+1. Go to build/tests folder
+2. Run EventHandlerTest
+
+Output:
+=======
+You should see a json file in format [unixtimestamp].json. 
+For e.g. 1724152991678254245.json containing result events as below:
+```json
+[
+    {
+        "data": "Hello",
+        "type": "EventTypeA"
+    },
+    {
+        "data": 42,
+        "type": "EventTypeB"
+    }
+]
+```
