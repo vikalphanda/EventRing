@@ -1,2 +1,0 @@
-/usr/bin/ar qc libEventHandler.a CMakeFiles/EventHandler.dir/EventHandler.cpp.o
-/usr/bin/ranlib libEventHandler.a
