@@ -6,6 +6,8 @@
 
 using json = nlohmann::json;
 
+class Event;
+
 class IEvent
 {
 public:
@@ -16,8 +18,35 @@ public:
 class Event
 {
 public:
+    // Default constructor
+    Event() : _ptr(nullptr) {}
+
+    // Parameterized constructor for type erasure
     template <typename T>
     Event(T event) : _ptr(std::make_shared<Model<T>>(std::move(event))) {}
+
+    // Copy constructor
+    Event(const Event& other) : _ptr(other._ptr) {}
+
+    // Move constructor
+    Event(Event&& other) noexcept : _ptr(std::move(other._ptr)) {}
+
+    // Assignment operator
+    Event& operator=(const Event& other) {
+        if (this != &other) {
+            _ptr = other._ptr;
+        }
+        return *this;
+    }
+
+    // Move assignment operator
+    Event& operator=(Event&& other) noexcept {
+        if (this != &other) {
+            _ptr = std::move(other._ptr);
+        }
+        return *this;
+    }
+    json ToJson() const { return _ptr->ToJson(); }
 private:
     struct Concept{
         virtual ~Concept() = default;

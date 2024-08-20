@@ -1,0 +1,10 @@
+[
+    {
+        "data": "Hello",
+        "type": "EventTypeA"
+    },
+    {
+        "data": 42,
+        "type": "EventTypeB"
+    }
+]
